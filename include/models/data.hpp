@@ -18,21 +18,21 @@ struct Bounds {
     double y_max = -limits::infinity();  // Maximum y-coordinate
 };
 
-Bounds operator+(Bounds a, Bounds b) {
+inline Bounds operator+(Bounds a, Bounds b) {
     return {std::min(a.x_min, b.x_min), std::max(a.x_max, b.x_max),
             std::min(a.y_min, b.y_min), std::max(a.y_max, b.y_max)};
 }
 
-Bounds operator+(Bounds a, std::pair<double, double> b) {
+inline Bounds operator+(Bounds a, std::pair<double, double> b) {
     return {std::min(a.x_min, b.first), std::max(a.x_max, b.first),
             std::min(a.y_min, b.second), std::max(a.y_max, b.second)};
 }
 
-Bounds& operator+=(Bounds& a, Bounds b) {
+inline Bounds& operator+=(Bounds& a, Bounds b) {
     return a = a + b;
 }
 
-Bounds& operator+=(Bounds& a, std::pair<double, double> b) {
+inline Bounds& operator+=(Bounds& a, std::pair<double, double> b) {
     return a = a + b;
 }
 

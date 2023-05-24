@@ -6,6 +6,12 @@ set(SRC
     ${SRCROOT}/data.cpp
 )
 
-add_library(models ${SRC})
+if ("${SRC}" STREQUAL "")
+	message("Models source not found")
+	set(models_CREATED FALSE)
+else()
+    add_library(models ${SRC})
 
-target_include_directories(models PUBLIC ${PROJECT_SOURCE_DIR}/include/)
+    target_include_directories(models PUBLIC ${PROJECT_SOURCE_DIR}/include/)
+	set(models_CREATED TRUE)
+endif()

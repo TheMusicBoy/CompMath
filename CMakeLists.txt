@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Thread configs
 set(CMAKE_THREAD_LIBS_INIT "-lpthread")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -static-libstdc++")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread ")
 set(CMAKE_HAVE_THREADS_LIBRARY 1)
 set(CMAKE_USE_WIN32_THREADS_INIT 0)
 set(CMAKE_USE_PTHREADS_INIT 1)
@@ -20,6 +20,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 find_package(Qt6 COMPONENTS Core Gui Widgets PrintSupport REQUIRED)
+
+include_directories(${Qt5Widgets_INCLUDES})
 
 add_subdirectory(thirdparty)
 add_subdirectory(src)
